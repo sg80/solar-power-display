@@ -3,16 +3,17 @@
 #include <math.h>
 #include "esp_pm.h"
 #include "esp_system.h"
+#include "secrets.h"
 
 // WLAN-Zugangsdaten
-const char* ssid = "<ssid>";
-const char* password = "<pass>";
+const char* ssid = WIFI_SSID;
+const char* password = WIFI_PASS;
 
 // MQTT-Einstellungen
 const char* mqtt_server = "homeassistant.local";
-const char* mqtt_user = "<user>";
-const char* mqtt_password = "<pass>";
-const char* mqtt_topic = "solar/ac/power";
+const char* mqtt_user = MQTT_USER;
+const char* mqtt_password = MQTT_PASS;
+const char* mqtt_topic = "home/solar/return_power";
 
 // Pins
 const int dacPin = 17;     // DAC-Ausgang
@@ -33,7 +34,7 @@ int convertToDAC(float watt);
 int convertToPWM(float watt);
 
 void setup() {
-  setCpuFrequencyMhz(60);
+  //setCpuFrequencyMhz(60);
 
   pinMode(ledPin, OUTPUT);
 
